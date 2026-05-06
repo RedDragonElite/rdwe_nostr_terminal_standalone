@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title data-version data-version-fmt="◢ RDWE ◣ NOSTR TERMINAL ${V}">◢ RDWE ◣ NOSTR TERMINAL v3.2.3</title>
+<title data-version data-version-fmt="◢ RDWE ◣ NOSTR TERMINAL ${V}">◢ RDWE ◣ NOSTR TERMINAL v3.2.4</title>
 <meta name="description" content="◢ RDWE ◣ Nostr Terminal — Standalone Nostr web client. Single-file, zero dependencies, full NIP coverage. Built by Red Dragon Web Engine.">
 <meta name="author" content="RedDragonElite">
 <meta name="keywords" content="nostr, nostr-client, nostr-protocol, nostr-relay, nip-07, web3, decentralized, lightning, bitcoin, RDWE">
@@ -612,7 +612,7 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
 <!-- HEADER -->
 <div id="hdr">
   <div class="hdr-top">
-    <div class="logo">◢ RDWE ◣ &nbsp;│&nbsp; NOSTR TERMINAL<span data-version>v3.2.3</span></div>
+    <div class="logo">◢ RDWE ◣ &nbsp;│&nbsp; NOSTR TERMINAL<span data-version>v3.2.4</span></div>
     <div class="hdr-right">
       <div id="notif-bell" onclick="toggleNotifPanel()" title="Notifications">
         🔔<div id="notif-count"></div>
@@ -682,7 +682,7 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
   </div>
   <div id="feed-body">
     <div class="spin-wrap">
-      <div style="color:var(--gdim);font-size:.78rem" data-version data-version-fmt="&gt; RDWE NOSTR TERMINAL ${V}">&gt; RDWE NOSTR TERMINAL v3.2.3</div>
+      <div style="color:var(--gdim);font-size:.78rem" data-version data-version-fmt="&gt; RDWE NOSTR TERMINAL ${V}">&gt; RDWE NOSTR TERMINAL v3.2.4</div>
       <div style="color:var(--muted2)">&gt; Enter npub above or click ⚡ MY FEED</div>
       <div style="color:var(--muted2);font-size:.6rem">&gt; Make sure RDWE Nostr Signer is installed &amp; unlocked</div>
       <div style="color:var(--rdim);margin-top:16px;font-size:2.5rem">◢ 🐉 ◣</div>
@@ -955,16 +955,22 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
 <div id="tab-credits" class="panel">
   <div class="credits-wrap">
     <div class="credits-logo">◢ RDWE ◣</div>
-    <div class="credits-sub" data-version data-version-fmt="RED DRAGON WEB ENGINE — NOSTR TERMINAL ${V} — ENDGAME EDITION">RED DRAGON WEB ENGINE — NOSTR TERMINAL v3.2.3 — ENDGAME EDITION</div>
+    <div class="credits-sub" data-version data-version-fmt="RED DRAGON WEB ENGINE — NOSTR TERMINAL ${V} — ENDGAME EDITION">RED DRAGON WEB ENGINE — NOSTR TERMINAL v3.2.4 — ENDGAME EDITION</div>
     <div class="credits-section">
       <div class="credits-title">◢ PROJECT INFO ◣</div>
       <div class="credits-row"><span class="k">PROJECT</span><span class="v">RDWE Nostr Terminal</span></div>
-      <div class="credits-row"><span class="k">VERSION</span><span class="v" data-version data-version-fmt="${V} — 2026 — Endgame Build">v3.2.3 — 2026 — Endgame Build</span></div>
+      <div class="credits-row"><span class="k">VERSION</span><span class="v" data-version data-version-fmt="${V} — 2026 — Endgame Build">v3.2.4 — 2026 — Endgame Build</span></div>
       <div class="credits-row"><span class="k">WEBSITE</span><span class="v"><a href="https://rd-elite.com" target="_blank">rd-elite.com</a></span></div>
       <div class="credits-row"><span class="k">SOURCE</span><span class="v"><a href="https://github.com/RedDragonElite" target="_blank">github.com/RedDragonElite</a></span></div>
       <div class="credits-row"><span class="k">SIGNER</span><span class="v"><a href="https://github.com/RedDragonElite/rdwe_nostr_signer" target="_blank">RDWE Signer</a> (NIP-04+44)</span></div>
       <div class="credits-row"><span class="k">LICENSE</span><span class="v">BFS v6.66 — Black Flag Source 🏴‍☠️</span></div>
       <div class="credits-row"><span class="k">BUILT BY</span><span class="v">◢🐉 RD-ELITE 🐉◣ × Claude × △ SerpentsByte ▽</span></div>
+    </div>
+    <div class="credits-section">
+      <div class="credits-title">◢ v3.2.4 BUGFIX ◣</div>
+      <div class="credits-row"><span class="k">🧵 THREAD DEDUP</span><span class="v">Replies no longer render multiple times — Set-based O(1) dedup + render throttle + defense-in-depth at render layer</span></div>
+      <div class="credits-row"><span class="k">🛡 ROOT GUARD</span><span class="v">Thread root event processed only once even when multiple relays return it</span></div>
+      <div class="credits-row"><span class="k">⏱ rAF THROTTLE</span><span class="v">Thread re-renders coalesced via requestAnimationFrame — handles burst of replies smoothly</span></div>
     </div>
     <div class="credits-section">
       <div class="credits-title">◢ v3.2.3 BUGFIX ◣</div>
@@ -1036,15 +1042,15 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
 <script>
 'use strict';
 // ══════════════════════════════════════════════════════════════════════════
-//  ◢ RDWE ◣ Nostr Terminal v3.2.3 — Daily Driver Build
+//  ◢ RDWE ◣ Nostr Terminal v3.2.4 — Daily Driver Build
 //  Full NIP support: 01 02 04 05 07 09 10 11 17 18 19 21 23 25 27 30 36 42
 //                    44 50 51 56 57 58 65 89 92 94 99
 //  © Red Dragon Web Engine · rd-elite.com · github.com/RedDragonElite
 // ══════════════════════════════════════════════════════════════════════════
-console.log('%c◢ RDWE ◣ Nostr Terminal v3.2.3 · BUILD 2026-04-29','color:#ff0000;font-size:14px;font-weight:bold;background:#000;padding:4px 8px;border:1px solid #ff0000');
+console.log('%c◢ RDWE ◣ Nostr Terminal v3.2.4 · BUILD 2026-04-29','color:#ff0000;font-size:14px;font-weight:bold;background:#000;padding:4px 8px;border:1px solid #ff0000');
 
 const CLIENT_NAME='RDWE Nostr Terminal';
-const CLIENT_VERSION='v3.2.3';
+const CLIENT_VERSION='v3.2.4';
 const CLIENT_URL='https://rd-elite.com';
 
 const DEFAULT_RELAYS=[
@@ -3572,33 +3578,55 @@ window.switchTab=switchTab;
 
 // ══════════ THREAD VIEW ════════════════════════════════════════════
 let threadSubId=null,threadCtxSubId=null;
+// Thread state — Sets for O(1) dedup, survives between subscription callbacks
+let _threadSeenReplies = new Set();
+let _threadSeenAncestors = new Set();
+let _threadRenderScheduled = false;
+function _scheduleThreadRender(){
+  if(_threadRenderScheduled)return;
+  _threadRenderScheduled=true;
+  requestAnimationFrame(()=>{_threadRenderScheduled=false;renderThread();});
+}
 function openThread(eid,relayHint){
   if(!eid)return;
   switchTab('threads');
   if(threadSubId)unsubscribe(threadSubId);
   if(threadCtxSubId)unsubscribe(threadCtxSubId);
   const body=document.getElementById('thread-body');if(body)body.innerHTML='<div class="spin-wrap"><div class="tsp"></div><div>&gt; LOADING THREAD…</div></div>';
+  // Reset all thread state — critical to prevent cross-thread bleed
   S.threadRoot=null;S.threadReplies=[];S.threadAncestors=[];
+  _threadSeenReplies.clear();
+  _threadSeenAncestors.clear();
+  let _rootSeen=false;
   threadSubId=subscribe({ids:[eid],limit:1},(ev,relay)=>{
+    if(_rootSeen)return;  // Multiple relays may return same root — only process once
+    _rootSeen=true;
     S.threadRoot={ev,relay};fetchRxn(ev.id);
-    if(!S.profileCache[ev.pubkey])fetchProfile(ev.pubkey,()=>renderThread());
+    if(!S.profileCache[ev.pubkey])fetchProfile(ev.pubkey,()=>_scheduleThreadRender());
     const eTags=(ev.tags||[]).filter(t=>t[0]==='e'&&/^[0-9a-f]{64}$/i.test(t[1]));
     const rootTag=eTags.find(t=>t[3]==='root')||eTags[0];
     const replyTag=eTags.find(t=>t[3]==='reply')||eTags[eTags.length-1];
     const ancestorIds=[...new Set([rootTag,replyTag].filter(Boolean).map(t=>t[1]))].filter(id=>id!==ev.id);
     if(ancestorIds.length){
-      const aSub=subscribe({ids:ancestorIds},(aev)=>{S.threadAncestors.push(aev);if(!S.profileCache[aev.pubkey])fetchProfile(aev.pubkey);renderThread();});
+      const aSub=subscribe({ids:ancestorIds},(aev)=>{
+        if(_threadSeenAncestors.has(aev.id))return;  // Dedup ancestors
+        _threadSeenAncestors.add(aev.id);
+        S.threadAncestors.push(aev);
+        if(!S.profileCache[aev.pubkey])fetchProfile(aev.pubkey);
+        _scheduleThreadRender();
+      });
       setTimeout(()=>unsubscribe(aSub),5000);
     }
-    renderThread();
+    _scheduleThreadRender();
   });
   threadCtxSubId=subscribe({kinds:[K.TEXT],'#e':[eid],limit:120},(ev)=>{
+    if(_threadSeenReplies.has(ev.id))return;  // O(1) Set-based dedup
+    _threadSeenReplies.add(ev.id);
     if(S.nostrMutes.has(ev.pubkey))return;
-    if(S.threadReplies.find(r=>r.id===ev.id))return;
     S.threadReplies.push(ev);
     fetchRxn(ev.id);
     if(!S.profileCache[ev.pubkey])fetchProfile(ev.pubkey);
-    renderThread();
+    _scheduleThreadRender();
   });
   setTimeout(()=>{
     if(threadSubId){unsubscribe(threadSubId);threadSubId=null;}
@@ -3609,12 +3637,14 @@ function openThread(eid,relayHint){
 function renderThread(){
   const body=document.getElementById('thread-body');if(!body)return;
   if(!S.threadRoot){body.innerHTML='<div class="spin-wrap"><div class="tsp"></div><div>&gt; LOADING…</div></div>';return;}
-  const ancestors=S.threadAncestors.slice().sort((a,b)=>a.created_at-b.created_at);
-  const replies=S.threadReplies.slice().sort((a,b)=>a.created_at-b.created_at);
+  // Defense-in-depth: dedup at render time too, in case state got polluted somehow
+  const seenA=new Set(),seenR=new Set();
+  const ancestors=S.threadAncestors.filter(a=>{if(seenA.has(a.id))return false;seenA.add(a.id);return true;}).sort((a,b)=>a.created_at-b.created_at);
+  const replies=S.threadReplies.filter(r=>{if(seenR.has(r.id))return false;seenR.add(r.id);return true;}).sort((a,b)=>a.created_at-b.created_at);
   body.innerHTML=`
     ${ancestors.map(a=>`<div class="thread-ancestor">${renderNoteCard(a,'')}</div>`).join('')}
     <div class="thread-focus">${renderNoteCard(S.threadRoot.ev,S.threadRoot.relay)}</div>
-    <div class="thread-replies-hdr">▼ ${replies.length} REPLIES</div>
+    <div class="thread-replies-hdr">▼ ${replies.length} ${replies.length===1?'REPLY':'REPLIES'}</div>
     ${replies.map(r=>`<div class="thread-reply">${renderNoteCard(r,'')}</div>`).join('')}
     ${replies.length===0?'<div class="empty">&gt; NO REPLIES</div>':''}
   `;
