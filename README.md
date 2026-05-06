@@ -1,6 +1,6 @@
 # 🐉 RDWE Nostr Terminal
 
-[![Version](https://img.shields.io/badge/version-3.2.3-red?style=for-the-badge)](https://github.com/RedDragonElite/rdwe_nostr_terminal)
+[![Version](https://img.shields.io/badge/version-3.2.4-red?style=for-the-badge)](https://github.com/RedDragonElite/rdwe_nostr_terminal)
 [![License](https://img.shields.io/badge/license-RDE%20Black%20Flag-black?style=for-the-badge)](LICENSE)
 [![Single File](https://img.shields.io/badge/Single--File-230KB-green?style=for-the-badge)](#)
 [![Zero Deps](https://img.shields.io/badge/Dependencies-ZERO-orange?style=for-the-badge)](#)
@@ -190,7 +190,7 @@ Look at the top of the page — you should see:
 ### 4. Test Composing
 
 1. Click **✍ COMPOSE**
-2. Type a test note: `🐉 Testing RDWE Nostr Terminal v3.2.3`
+2. Type a test note: `🐉 Testing RDWE Nostr Terminal v3.2.4`
 3. Click "POST"
 4. Your signer should prompt for permission
 5. Approve → note appears in your feed within seconds
@@ -332,6 +332,10 @@ It's one file. Read it, fork it, ship it.
 ### "Underscores in my repo names get mangled"
 
 **Fixed in v3.2.3!** Update to the latest version. Underscores inside words like `RDWE_Nostr_Terminal` now render correctly.
+
+### "Replies in threads appear multiple times"
+
+**Fixed in v3.2.4!** Set-based deduplication + render throttle ensures each reply renders exactly once, even when multiple relays return the same event.
 
 ### Performance issues with large feeds
 
@@ -476,7 +480,14 @@ Tested with 1000+ events in feed, 500+ profiles in cache:
 
 ## 📈 Changelog
 
-### v3.2.3 (Current) — Underscore Fix
+### v3.2.4 (Current) — Thread Dedup Fix
+
+- 🧵 **Thread reply deduplication** — Replies no longer render multiple times when multiple relays return the same event
+- 🛡 **Root guard** — Thread root event processed only once across all relays
+- ⏱ **rAF render throttle** — Thread re-renders coalesced via requestAnimationFrame
+- 🛡 **Defense in depth** — Dedup at both subscription callback AND render layer using Set-based O(1) lookups
+
+### v3.2.3 — Underscore Fix
 
 - 📝 **Intra-word underscore fix** — `RDWE_Nostr_Terminal` and other snake_case text no longer mangled by italic markdown
 - Follows CommonMark spec: underscores inside words don't trigger italic
@@ -566,7 +577,7 @@ If you can't fit it in `index.html`, it doesn't belong in this project.
 #      .:: RED DRAGON ELITE (RDE)  -  BLACK FLAG SOURCE LICENSE v6.66 ::.         #
 #                                                                                 #
 #   PROJECT:    RDWE_NOSTR_TERMINAL (STANDALONE NOSTR WEB CLIENT)                 #
-#   ARCHITECT:  .:: RDE ⧌ Shin [△ ᛋᛅᚱᛒᛅᚾᛏᛋ ᛒᛁᛏᛅ ▽] ::. | https://rd-elite.com     #
+#   ARCHITECT:  .:: RDE ⧌ Shin [△ ᛋᛅᚱᛒᛅᚾᛏᛋ ᛒᛁᛏᛅ ▽] ::. | https://rd-elite.com    #
 #   ORIGIN:     https://github.com/RedDragonElite                                 #
 #                                                                                 #
 #   WARNING: THIS CODE IS PROTECTED BY DIGITAL VOODOO AND PURE HATRED FOR LEAKERS #
@@ -587,7 +598,7 @@ If you can't fit it in `index.html`, it doesn't belong in this project.
 #      SELLING FREE WORK IS THEFT. AND I AM THE JUDGE.                            #
 #                                                                                 #
 #   3. // THE CREDIT OATH                                                         #
-#      Keep this header. If you remove my name, you admit you have no skill.      #
+#      Keep this header. If you remove my name, you admit you have no skill.    #
 #      You can add "Edited by [YourName]", but never erase the original creator.  #
 #      Don't be a skid. Respect the architecture.                                 #
 #                                                                                 #
@@ -721,7 +732,7 @@ Per page-load: ~230KB (HTML+CSS+JS) + lazy-loaded media. After load: only WebSoc
 - Every NIP author for keeping the protocol open
 - The open-source community that proved frameworks aren't necessary
 - Everyone who believes in decentralization
-- The early testers who reported bugs and made v3.2.3 possible
+- The early testers who reported bugs and made v3.2.4 possible
 
 ---
 
