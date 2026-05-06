@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title>◢ RDWE ◣ NOSTR TERMINAL v3.2.1</title>
+<title data-version data-version-fmt="◢ RDWE ◣ NOSTR TERMINAL ${V}">◢ RDWE ◣ NOSTR TERMINAL v3.2.3</title>
 <meta name="description" content="◢ RDWE ◣ Nostr Terminal — Standalone Nostr web client. Single-file, zero dependencies, full NIP coverage. Built by Red Dragon Web Engine.">
 <meta name="author" content="RedDragonElite">
 <meta name="keywords" content="nostr, nostr-client, nostr-protocol, nostr-relay, nip-07, web3, decentralized, lightning, bitcoin, RDWE">
@@ -612,7 +612,7 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
 <!-- HEADER -->
 <div id="hdr">
   <div class="hdr-top">
-    <div class="logo">◢ RDWE ◣ &nbsp;│&nbsp; NOSTR TERMINAL<span>v3.2.1</span></div>
+    <div class="logo">◢ RDWE ◣ &nbsp;│&nbsp; NOSTR TERMINAL<span data-version>v3.2.3</span></div>
     <div class="hdr-right">
       <div id="notif-bell" onclick="toggleNotifPanel()" title="Notifications">
         🔔<div id="notif-count"></div>
@@ -682,7 +682,7 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
   </div>
   <div id="feed-body">
     <div class="spin-wrap">
-      <div style="color:var(--gdim);font-size:.78rem">&gt; RDWE NOSTR TERMINAL v3.2.1</div>
+      <div style="color:var(--gdim);font-size:.78rem" data-version data-version-fmt="&gt; RDWE NOSTR TERMINAL ${V}">&gt; RDWE NOSTR TERMINAL v3.2.3</div>
       <div style="color:var(--muted2)">&gt; Enter npub above or click ⚡ MY FEED</div>
       <div style="color:var(--muted2);font-size:.6rem">&gt; Make sure RDWE Nostr Signer is installed &amp; unlocked</div>
       <div style="color:var(--rdim);margin-top:16px;font-size:2.5rem">◢ 🐉 ◣</div>
@@ -955,16 +955,25 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
 <div id="tab-credits" class="panel">
   <div class="credits-wrap">
     <div class="credits-logo">◢ RDWE ◣</div>
-    <div class="credits-sub">RED DRAGON WEB ENGINE — NOSTR TERMINAL v3.2.1 — ENDGAME EDITION</div>
+    <div class="credits-sub" data-version data-version-fmt="RED DRAGON WEB ENGINE — NOSTR TERMINAL ${V} — ENDGAME EDITION">RED DRAGON WEB ENGINE — NOSTR TERMINAL v3.2.3 — ENDGAME EDITION</div>
     <div class="credits-section">
       <div class="credits-title">◢ PROJECT INFO ◣</div>
       <div class="credits-row"><span class="k">PROJECT</span><span class="v">RDWE Nostr Terminal</span></div>
-      <div class="credits-row"><span class="k">VERSION</span><span class="v">3.1.0 — 2026 — Daily Driver Build</span></div>
+      <div class="credits-row"><span class="k">VERSION</span><span class="v" data-version data-version-fmt="${V} — 2026 — Endgame Build">v3.2.3 — 2026 — Endgame Build</span></div>
       <div class="credits-row"><span class="k">WEBSITE</span><span class="v"><a href="https://rd-elite.com" target="_blank">rd-elite.com</a></span></div>
       <div class="credits-row"><span class="k">SOURCE</span><span class="v"><a href="https://github.com/RedDragonElite" target="_blank">github.com/RedDragonElite</a></span></div>
       <div class="credits-row"><span class="k">SIGNER</span><span class="v"><a href="https://github.com/RedDragonElite/rdwe_nostr_signer" target="_blank">RDWE Signer</a> (NIP-04+44)</span></div>
       <div class="credits-row"><span class="k">LICENSE</span><span class="v">BFS v6.66 — Black Flag Source 🏴‍☠️</span></div>
       <div class="credits-row"><span class="k">BUILT BY</span><span class="v">◢🐉 RD-ELITE 🐉◣ × Claude × △ SerpentsByte ▽</span></div>
+    </div>
+    <div class="credits-section">
+      <div class="credits-title">◢ v3.2.3 BUGFIX ◣</div>
+      <div class="credits-row"><span class="k">📝 INTRA-WORD _</span><span class="v">CommonMark-style: underscores inside words don't trigger italic anymore — RDWE_Nostr_Terminal stays intact</span></div>
+    </div>
+    <div class="credits-section">
+      <div class="credits-title">◢ v3.2.2 BUGFIX ◣</div>
+      <div class="credits-row"><span class="k">🔗 URL FIX</span><span class="v">Underscores in URLs no longer eaten by italic markdown — github.com/.../rdwe_nostr_terminal renders correctly</span></div>
+      <div class="credits-row"><span class="k">🔢 VERSION SYNC</span><span class="v">Centralized version display via data-version + updateVersionStrings() — bump CLIENT_VERSION once, all UI updates</span></div>
     </div>
     <div class="credits-section">
       <div class="credits-title">◢ v3.2.1 BUGFIX ◣</div>
@@ -1027,15 +1036,15 @@ textarea.inp{resize:vertical;min-height:100px;line-height:1.6}
 <script>
 'use strict';
 // ══════════════════════════════════════════════════════════════════════════
-//  ◢ RDWE ◣ Nostr Terminal v3.2.1 — Daily Driver Build
+//  ◢ RDWE ◣ Nostr Terminal v3.2.3 — Daily Driver Build
 //  Full NIP support: 01 02 04 05 07 09 10 11 17 18 19 21 23 25 27 30 36 42
 //                    44 50 51 56 57 58 65 89 92 94 99
 //  © Red Dragon Web Engine · rd-elite.com · github.com/RedDragonElite
 // ══════════════════════════════════════════════════════════════════════════
-console.log('%c◢ RDWE ◣ Nostr Terminal v3.2.1 · BUILD 2026-04-29','color:#ff0000;font-size:14px;font-weight:bold;background:#000;padding:4px 8px;border:1px solid #ff0000');
+console.log('%c◢ RDWE ◣ Nostr Terminal v3.2.3 · BUILD 2026-04-29','color:#ff0000;font-size:14px;font-weight:bold;background:#000;padding:4px 8px;border:1px solid #ff0000');
 
 const CLIENT_NAME='RDWE Nostr Terminal';
-const CLIENT_VERSION='v3.2.1';
+const CLIENT_VERSION='v3.2.3';
 const CLIENT_URL='https://rd-elite.com';
 
 const DEFAULT_RELAYS=[
@@ -1460,6 +1469,29 @@ function renderMD(text){
     return ph;
   });
   s=s.replace(/`([^`\n]+)`/g,'<code>$1</code>');
+  // PROTECT URLs from later italic/bold transforms (e.g. underscores in URLs).
+  // We extract them, replace with placeholders, and restore at the end.
+  const urlSlots=[];
+  // Markdown links first: [text](url)
+  s=s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,(m,t,u)=>{
+    if(!/^https?:\/\//i.test(u))return m;
+    urlSlots.push(`<a href="${u}" target="_blank" rel="noopener nofollow ugc">${t}</a>`);
+    return `\x00URL${urlSlots.length-1}\x00`;
+  });
+  // Bare autolink URLs (skip if inside an HTML tag attribute)
+  s=s.replace(/(?:^|(?<=>)|(?<=\s))(https?:\/\/[^\s<"']+)/g,(m,url,offset,str)=>{
+    const before=str.slice(0,offset+(m.length-url.length));
+    const lastOpen=before.lastIndexOf('<');
+    const lastClose=before.lastIndexOf('>');
+    if(lastOpen>lastClose)return m;
+    // Strip trailing punctuation that's likely not part of URL
+    let clean=url,trail='';
+    const tm=clean.match(/[.,;:!?)\]}>]+$/);
+    if(tm){trail=tm[0];clean=clean.slice(0,-trail.length);}
+    urlSlots.push(`<a href="${clean}" target="_blank" rel="noopener nofollow ugc">${clean}</a>`);
+    return `\x00URL${urlSlots.length-1}\x00`+trail;
+  });
+  // Now do headings, lists, italic/bold etc — URLs are protected
   s=s.replace(/^###### (.+)$/gm,'<h6>$1</h6>');
   s=s.replace(/^##### (.+)$/gm,'<h5>$1</h5>');
   s=s.replace(/^#### (.+)$/gm,'<h4>$1</h4>');
@@ -1472,24 +1504,15 @@ function renderMD(text){
   s=s.replace(/(<li>[\s\S]*?<\/li>\n?)+(?!<li>)/g,m=>'<ul>'+m+'</ul>');
   s=s.replace(/^\d+\. (.+)$/gm,'<oli>$1</oli>');
   s=s.replace(/(<oli>[\s\S]*?<\/oli>\n?)+(?!<oli>)/g,m=>'<ol>'+m.replace(/<\/?oli>/g,matched=>matched==='<oli>'?'<li>':'</li>')+'</ol>');
+  // CommonMark-style: underscores inside words don't trigger italic/bold
+  // RDWE_Nostr_Terminal stays intact, but _italic_ still works
   s=s.replace(/\*\*([^*\n]+?)\*\*/g,'<strong>$1</strong>');
   s=s.replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g,'<em>$1</em>');
-  s=s.replace(/__([^_\n]+?)__/g,'<strong>$1</strong>');
-  s=s.replace(/(?<!_)_([^_\n]+?)_(?!_)/g,'<em>$1</em>');
+  s=s.replace(/(?<![A-Za-z0-9])__([^_\n]+?)__(?![A-Za-z0-9])/g,'<strong>$1</strong>');
+  s=s.replace(/(?<![A-Za-z0-9_])_([^_\n]+?)_(?![A-Za-z0-9_])/g,'<em>$1</em>');
   s=s.replace(/~~([^~\n]+?)~~/g,'<del>$1</del>');
-  // Markdown links
-  s=s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(m,t,u)=>{
-    if(!/^https?:\/\//i.test(u))return m;
-    return`<a href="${u}" target="_blank" rel="noopener nofollow ugc">${t}</a>`;
-  });
-  // Autolink — skip URLs already inside HTML tags
-  s=s.replace(/(?:^|(?<=>)|(?<=\s))(https?:\/\/[^\s<"']+)/g,(m,url,offset,str)=>{
-    const before=str.slice(0,offset+(m.length-url.length));
-    const lastOpen=before.lastIndexOf('<');
-    const lastClose=before.lastIndexOf('>');
-    if(lastOpen>lastClose)return m;
-    return`<a href="${url}" target="_blank" rel="noopener nofollow ugc">${url}</a>`;
-  });
+  // Restore protected URLs (now safe from underscore-italic damage)
+  urlSlots.forEach((tag,i)=>{s=s.replace(`\x00URL${i}\x00`,tag);});
   codeBlocks.forEach((blk,i)=>{s=s.replace(`\x00CB${i}\x00`,blk);});
   s=s.replace(/\n/g,'<br>');
   return s;
@@ -3850,8 +3873,19 @@ function bindUI(){
 
 // ══════════ BOOT ════════════════════════════════════════════════
 let _booted=false;
+// ── Centralized version display: scans DOM for [data-version] and updates from CLIENT_VERSION
+// To bump version: edit CLIENT_VERSION at top — every tagged element auto-updates here.
+function updateVersionStrings(){
+  document.querySelectorAll('[data-version]').forEach(el=>{
+    const fmt=el.dataset.versionFmt;
+    if(fmt){el.textContent=fmt.replace(/\$\{V\}/g,CLIENT_VERSION);}
+    else{el.textContent=CLIENT_VERSION;}
+  });
+}
+
 async function boot(){
   if(_booted)return;_booted=true;
+  updateVersionStrings();
   bindUI();
   renderTagPresets();
   renderRelayPanel();

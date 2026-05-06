@@ -50,7 +50,7 @@ It pairs perfectly with **[RDWE Nostr Signer](https://github.com/RedDragonElite/
 - 🔐 **NIP-05 Generator** — generate `nostr.json` for your own domain
 - ⚙ **Settings** — encryption preference, autoplay, sensitive content, etc.
 
-### Performance (v3.2.1)
+### Performance (v3.2.3)
 - 🚀 **Virtual scrolling** on every list — handles 10K+ notes without lag
 - 🖼 **IntersectionObserver image lazy-load** — only loads images near viewport
 - ⚡ **Lazy reaction fetch** — only subscribes to reactions for visible notes
@@ -150,10 +150,10 @@ python3 -m http.server 8080
 ┌─────────────────────────────────────────────────────────────┐
 │  index.html — single-file Nostr client (~230KB)             │
 │                                                             │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │ Bech32   │  │ Markdown │  │ Lazy-    │  │ Virtual  │    │
-│  │ + TLV    │  │ Renderer │  │ Loader   │  │ Scroll   │    │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘    │
+│   ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
+│   │ Bech32   │  │ Markdown │  │ Lazy-    │  │ Virtual  │    │
+│   │ + TLV    │  │ Renderer │  │ Loader   │  │ Scroll   │    │
+│   └──────────┘  └──────────┘  └──────────┘  └──────────┘    │
 │                                                             │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │  Relay Engine — WebSocket pool, exp. backoff,        │   │
